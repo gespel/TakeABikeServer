@@ -3,17 +3,16 @@ import java.io.InputStreamReader
 import java.net.ServerSocket
 
 class Server {
+    private var server: ServerSocket = ServerSocket(9999)
     init {
-        val server = ServerSocket(9999)
+        println("Server running on  ${server.inetAddress.hostAddress}:${server.localPort}")
+        server.inetAddress.hostAddress
     }
 
-    println("Server running on port ${server.localPort}")
-    while(true) {
-        val client = server.accept()
-        println("Client connected : ${client.inetAddress.hostAddress}")
-        println(BufferedReader(InputStreamReader(client.inputStream)).readLine())
-        client.getOutputStream().write("Bla".toByteArray())
-        client.close()
+    fun mainServerLoop() {
+        while(true) {
+            ClientThread(server.accept()).start()
+        }
+        server.close()
     }
-    server.close()
 }

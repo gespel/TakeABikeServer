@@ -4,5 +4,6 @@ import java.net.ServerSocket
 import java.util.*
 
 fun main(args: Array<String>) {
-
+    val s = Server()
+    s.mainServerLoop()
 }
