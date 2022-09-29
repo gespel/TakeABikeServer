@@ -1,4 +1,5 @@
 import com.google.gson.Gson
+import de.heimbrodt.tabplayer.TABPlayer
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.Socket
@@ -11,7 +12,8 @@ class ClientThread(private val client: Socket): Thread() {
         println(fromClient)
         //client.getOutputStream().write("Bla".toByteArray())
         var gson = Gson()
-        var model = gson.fromJson(fromClient)
+        var model = gson.fromJson(fromClient, TABPlayer::class.java)
+        println("${model.getPlayer().level} ${model.getPlayer().exp}")
         client.close()
 
         /*try {

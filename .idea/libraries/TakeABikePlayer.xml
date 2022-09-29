@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="TakeABikePlayer">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/TakeABikePlayer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
